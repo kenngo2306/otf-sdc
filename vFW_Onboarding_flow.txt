@@ -28,7 +28,10 @@ Pre-requisites:
 
 
 Login as a service designer (cs0008)
+	ONAP portal project: https://github.com/onap/portal
+	
 Creating a license module (VLM): 
+	NOTE: openecomp-ui written in React, backend written in Java
 	front end: https://github.com/onap/sdc/tree/master/openecomp-ui/src/sdc-app/onboarding/licenseModel
 	back end: https://github.com/onap/sdc/tree/master/openecomp-be/api/openecomp-sdc-rest-webapp/vendor-license-rest
 ONBOARD -> create license in create new VLM –> give vendor name and description of LM.
@@ -59,30 +62,45 @@ Now you can see .yaml and .env files -> proceed for validation -> warnings -> sa
 		
 Import that VSP into catalog
 ONBOARD -> Home -> import VSP -> select vendor -> create the asset -> submit it for testing -> logout as designer.
+	https://github.com/onap/sdc/blob/master/openecomp-ui/src/sdc-app/onboarding/onboard/onboardingCatalog/VendorItem.jsx
 
 Login as a tester(jm0007)
 SDC -> newly deployed VSP is ready for testing -> select vFW-VSINK(VSP) -> start testing
+	https://github.com/onap/sdc/blob/master/openecomp-ui/test/softwareProduct/test.js
+	https://github.com/onap/sdc/tree/master/openecomp-ui/test/softwareProduct
 Everything is fine -> accept the test -> certification confirmed.
-
+	
 Now, Testing is done and VSP is ready to be used to cerate service.
 Login as a service designer (cs0008)
 Connect to SDC -> we can see certified VSP 
 To create a service: 
 Add service -> General -> assign name = vFW-VSINK service -> description -> assign product code -> category = network L4+ -> create asset.
-
+	NOTE: sdc sub-project code changed to catalog - written in Angular/typescript front end
+	https://github.com/onap/sdc/tree/master/catalog-ui/src/app/view-models/workspace/tabs/general
+	https://github.com/onap/sdc/tree/master/catalog-ui/src/app/view-models/dashboard
+	https://github.com/onap/sdc/blob/master/catalog-ui/src/app/view-models/dashboard/dashboard-view.html
+	
 To compose the service:
 From left corner of portal – all the VSP – select vFW-vSINK & vPKG -> submit the service for testing ->logout
+	
 
 Login as a tester(jm0007)
 Select the service (vFW-VSINK service) -> start the testing ->Accept the test -> Now service is created but we still need approval.
-
+	https://github.com/onap/sdc/blob/master/test-apis-ci/testngLifeCycle.xml
+	https://github.com/onap/sdc/blob/master/catalog-ui/src/app/view-models/workspace/workspace-view.html
+	
+	
 Login as a governor(gv0001)
 SDC-> new service i.e. Waiting for approval -> approve -> service approved.
 Now we can distribute using operator.
+	https://github.com/onap/sdc/blob/master/catalog-ui/src/app/view-models/workspace/workspace-view.html
+	https://github.com/onap/sdc/blob/master/catalog-ui/src/app/view-models/workspace/workspace-view-model.ts
 
 Login as a operator(op0001)
 Service artifacts are distributed to other ONAP components like A&AI, VID & SO.
 New artifacts(service) waiting for approval -> service distribute-> logout
+	url: distribution/PROD/activate
+	https://github.com/onap/sdc/blob/master/catalog-ui/src/app/view-models/workspace/workspace-view-model.ts
 
 This completes SDC.
 
