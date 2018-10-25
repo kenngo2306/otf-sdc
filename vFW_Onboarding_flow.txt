@@ -1,0 +1,60 @@
+ONBOARDING VNF (vFW) via ONAP portal:
+Pre-requisites:
+1.	Clone demo heat template from heat directory.
+2.	Consists of 2 VF modules “vFW and vSINK”, “vPKG” which is virtual packet generator which generates a traffic.
+3.	vFW Directory – a. yaml heat template – describes a service
+		   b. env file – parameters used by heat template
+		    c. manifest file – description of content of directory – used by ONAP to 					        understand how VNF package is composed.
+
+4.	Zip these 3 files inside the directory on workstation – objective of doing this is onboarding this package file in SDC and distribute metadata to other ONAP components.
+
+
+Login as a service designer (cs0008)
+Creating a license module (VLM):
+ONBOARD -> create license in create new VLM –> give vendor name and description of LM.
+For new LM we have to create:
+License Agreement, Feature Group, Entitlement pool and license Key groups.
+Link feature group with Entitlement pool -> submit -> commit
+
+ Creating a vendor software product (VSP):
+ONBOARD -> create license in create new VSP -> name of new software product -> select vendor VLM -> select category FW(L4+) -> network package (helps to onboard zip pkg which we created before) -> description -> create.
+
+Assign the license based on the vendor
+version – 1.0 -> license agreement -> feature group
+
+Upload the Zip file in select file
+Now you can see .yaml and .env files -> proceed for validation -> warnings -> save it -> submit
+
+Import that VSP into catalog
+ONBOARD -> Home -> import VSP -> select vendor -> create the asset -> submit it for testing -> logout as designer.
+
+Login as a tester(jm0007)
+SDC -> newly deployed VSP is ready for testing -> select vFW-VSINK(VSP) -> start testing
+Everything is fine -> accept the test -> certification confirmed.
+
+Now, Testing is done and VSP is ready to be used to cerate service.
+Login as a service designer (cs0008)
+Connect to SDC -> we can see certified VSP 
+To create a service: 
+Add service -> General -> assign name = vFW-VSINK service -> description -> assign product code -> category = network L4+ -> create asset.
+
+To compose the service:
+From left corner of portal – all the VSP – select vFW-vSINK & vPKG -> submit the service for testing ->logout
+
+Login as a tester(jm0007)
+Select the service (vFW-VSINK service) -> start the testing ->Accept the test -> Now service is created but we still need approval.
+
+Login as a governor(gv0001)
+SDC-> new service i.e. Waiting for approval -> approve -> service approved.
+Now we can distribute using operator.
+
+Login as a operator(op0001)
+Service artifacts are distributed to other ONAP components like A&AI, VID & SO.
+New artifacts(service) waiting for approval -> service distribute-> logout
+
+This completes SDC.
+
+ 
+
+
+
