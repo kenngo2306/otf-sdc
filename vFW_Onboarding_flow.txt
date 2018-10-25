@@ -1,10 +1,28 @@
 ONBOARDING VNF (vFW) via ONAP portal:
+Main repository for vFW ONAP demo: https://github.com/onap/demo/tree/master/vnfs/vFW
 Pre-requisites:
 1.	Clone demo heat template from heat directory.
+ Heat template:
+	https://github.com/onap/demo/blob/master/heat/vFW/base_vfw.yaml
+ Heat teamplate format/documentation:
+	https://onap.readthedocs.io/en/latest/submodules/vnfrqts/requirements.git/docs/Chapter5/Heat/index.html?highlight=heat
+	https://onap.readthedocs.io/en/amsterdam/submodules/dcaegen2.git/docs/sections/installation_heat.html
+	https://onap.readthedocs.io/en/amsterdam/submodules/vnfrqts/guidelines.git/docs/all_vnfrqts_seed_docs/open_ecomp/inital_seed_ecomp/VNF_Heat_Templates_for_OpenEcomp/index.html?highlight=heat%20template
+	
 2.	Consists of 2 VF modules “vFW and vSINK”, “vPKG” which is virtual packet generator which generates a traffic.
-3.	vFW Directory – a. yaml heat template – describes a service
-		   b. env file – parameters used by heat template
-		    c. manifest file – description of content of directory – used by ONAP to 					        understand how VNF package is composed.
+	https://github.com/onap/demo/blob/master/vnfs/vFW/scripts/vsink.sh
+	https://github.com/onap/demo/blob/master/vnfs/vFW/scripts/v_sink_init.sh
+	https://github.com/onap/demo/blob/master/vnfs/vFW/scripts/v_sink_install.sh
+	
+	https://github.com/onap/demo/blob/master/heat/vFWCL/vPKG/base_vpkg.yaml
+	
+3.	vFW Directory:
+		a. yaml heat template – describes a service
+				https://github.com/onap/demo/blob/master/heat/vFW/base_vfw.yaml
+		b. env file – parameters used by heat template
+				https://github.com/onap/demo/blob/master/heat/vFW/base_vfw.env
+		c. manifest file – description of content of directory – used by ONAP to understand how VNF package is composed.
+				https://github.com/onap/demo/blob/master/heat/vFW/MANIFEST.json
 
 4.	Zip these 3 files inside the directory on workstation – objective of doing this is onboarding this package file in SDC and distribute metadata to other ONAP components.
 
