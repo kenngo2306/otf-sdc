@@ -28,21 +28,35 @@ Pre-requisites:
 
 
 Login as a service designer (cs0008)
-Creating a license module (VLM):
+Creating a license module (VLM): 
+	front end: https://github.com/onap/sdc/tree/master/openecomp-ui/src/sdc-app/onboarding/licenseModel
+	back end: https://github.com/onap/sdc/tree/master/openecomp-be/api/openecomp-sdc-rest-webapp/vendor-license-rest
 ONBOARD -> create license in create new VLM –> give vendor name and description of LM.
+	
+	
 For new LM we have to create:
 License Agreement, Feature Group, Entitlement pool and license Key groups.
 Link feature group with Entitlement pool -> submit -> commit
 
  Creating a vendor software product (VSP):
+	Front end:
+		https://github.com/onap/sdc/tree/master/openecomp-ui/src/sdc-app/onboarding/onboard
+		https://github.com/onap/sdc/tree/master/openecomp-ui/src/sdc-app/onboarding/softwareProduct
+	Back end:
+		https://github.com/onap/sdc/tree/master/openecomp-be/api/openecomp-sdc-rest-webapp/vendor-software-products-rest
+		
 ONBOARD -> create license in create new VSP -> name of new software product -> select vendor VLM -> select category FW(L4+) -> network package (helps to onboard zip pkg which we created before) -> description -> create.
-
+	https://github.com/onap/sdc/blob/master/openecomp-ui/src/sdc-app/onboarding/softwareProduct/creation/SoftwareProductCreationView.jsx
+	
 Assign the license based on the vendor
 version – 1.0 -> license agreement -> feature group
 
 Upload the Zip file in select file
 Now you can see .yaml and .env files -> proceed for validation -> warnings -> save it -> submit
-
+	Validation: 
+		front end code: https://github.com/onap/sdc/tree/master/openecomp-ui/src/sdc-app/heatvalidation
+		back end code:  https://github.com/onap/sdc/tree/master/openecomp-be/api/openecomp-sdc-rest-webapp/validation-rest
+		
 Import that VSP into catalog
 ONBOARD -> Home -> import VSP -> select vendor -> create the asset -> submit it for testing -> logout as designer.
 
